@@ -1,4 +1,4 @@
-const display = document.querySelector(".calc_display");
+const output = document.querySelector(".output");
 const buttons = document.querySelectorAll(".btn");
 
 buttons.forEach((button) => {
@@ -6,17 +6,28 @@ buttons.forEach((button) => {
     const value = button.textContent;
 
     if (value === "C") {
-      display.textContent = ""; // cls
+      output.textContent = ""; // CLS
     } else if (value === "=") {
       try {
-        // calculate the expression and round it
-        const result = eval(display.textContent);
-        display.textContent = result;
+        const result = eval(output.textContent);
+        output.textContent = Math.round(result * 100) / 100; // round to 2 decimal places
       } catch (e) {
-        display.textContent = "Error";
+        if (value === "=") {
+          try {
+            const result = eval(output.textContent);
+            output.textContent = Math.round(result * 100) / 100;
+            output.classList.remove("error");
+          } catch (e) {
+            output.textContent = "Error";
+            output.classList.add("error");
+          }
+        }
       }
     } else {
-      display.textContent += value; // add opertator
+      if (output.classList.contains("error")) {
+        output.classList.remove("error");
+      }
+      output.textContent += value; // add operand
     }
   });
 });

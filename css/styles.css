@@ -18,13 +18,32 @@ body {
 }
 
 body.light-mode {
-    background-color: #f5e0dc;
-    color: #11111b;
+  background-color: #f5e0dc;
 }
 
 body.dark-mode {
-    background-color: #232634;
-    color: #cdd6f4;
+  background-color: #232634;
+}
+
+.output {
+  font-family: "Digital-7", monospace;
+  font-size: 70px;
+  color: #077010;
+}
+.output.light-mode {
+  color: #077010;
+}
+.output.dark-mode {
+  color: rgb(185, 185, 11);
+}
+
+.output.error {
+  color: red !important;
+}
+
+h2 {
+  color: #666;
+  font-variant: small-caps;
 }
 
 .calc {
@@ -32,26 +51,26 @@ body.dark-mode {
   flex-direction: column;
   width: auto;
   height: auto;
-
-  border: solid 1px red;
+  padding: 20px;
 }
 
 .calc_switch {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 20px;
+  height: 50px;
 }
 
 .calc_display {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  align-self: center;
+  width: calc(100% - 40px);
   height: 200px;
-
-  background-color: #eee;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .calc_buttonSets {
@@ -59,7 +78,7 @@ body.dark-mode {
   flex-direction: row;
   width: auto;
   height: auto;
-  border: solid 1px black;
+  padding: 10px;
 }
 
 .calc_buttonSets_column_left {
@@ -67,7 +86,6 @@ body.dark-mode {
   flex-direction: column;
   width: auto;
   height: auto;
-  background-color: red;
 }
 
 .calc_buttonSets_column_right {
@@ -75,7 +93,6 @@ body.dark-mode {
   flex-direction: column;
   width: auto;
   height: auto;
-  background-color: blue;
 }
 
 .button_row {
@@ -92,10 +109,33 @@ body.dark-mode {
   height: auto;
 }
 
+#frame_outer {
+  border-radius: 10px;
+  background: #e0e0e0;
+  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+}
+
+#frame_inner {
+  border-radius: 10px;
+  background: #e0e0e0;
+  box-shadow: inset 20px 20px 60px #bebebe, inset -20px -20px 60px #ffffff;
+}
+
 button {
-  border: none;
-  width: 40px;
-  height: 40px;
-  margin: 5px;
-  border-radius: 8px;
+  color: #666;
+  padding: 0.7em 1.7em;
+  font-size: 18px;
+  font-variant: small-caps;
+  border-radius: 0.5em;
+  background: #e8e8e8;
+  cursor: pointer;
+  border: 1px solid #e8e8e8;
+  transition: all 0.3s;
+  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+  margin: 10px;
+}
+
+button:active {
+  color: #666;
+  box-shadow: inset 4px 4px 12px #c5c5c5, inset -4px -4px 12px #ffffff;
 }
